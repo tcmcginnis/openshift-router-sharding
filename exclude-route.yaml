@@ -1,0 +1,13 @@
+# Add this after the "replicas:" line in the default Ingress Controller
+#
+# oc get -n openshift-ingress-operator ingresscontroller default -oyaml
+#
+# individual per route router sharding
+#
+  routeSelector:
+    matchExpressions:
+    - key: routertype
+      operator: NotIn
+      values:
+      - sharded
+

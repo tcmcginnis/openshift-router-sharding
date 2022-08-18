@@ -1,0 +1,22 @@
+# Add this after the "replicas:" line in the default Ingress Controller
+#
+# oc get -n openshift-ingress-operator ingresscontroller default -oyaml
+#
+# Namespace router sharding
+#
+  namespaceSelector:
+    matchExpressions:
+    - key: routeshard
+      operator: DoesNotExist
+
+# Or this if you want a seperate key
+# This allows both the default and the shard ingress controller to function while performing a conversion.
+# So for example, a namespace can have the "routeshard" variable but leave the "routertype" variable blank which
+# will enable seperate control over which namespaces can still be managed by the default ingress controller.
+
+  namespaceSelector:
+    matchExpressions:
+    - key: routertype
+      operator: NotIn
+      values:
+      - sharded
