@@ -13,3 +13,5 @@
 # Scaling:
 oc -n openshift-ingress-operator scale IngressController shard-1 --replicas=3
 
+# RedHat Guidelines for various limits including routes per Ingress Controllers
+https://docs.openshift.com/container-platform/4.10/scalability_and_performance/planning-your-environment-according-to-object-maximums.html
